@@ -24,13 +24,14 @@ for row_index, row in enumerate(datareader):
 	# Othrwise, create a YAML file from the data in this row...
 	else:
 		# Open a new file with filename based on the first column
-		filename = row[0].lower().replace(" county", "").replace(" ", "_") + '.md'
+		# I like to use .txt files with Jekyll but .md is default
+		filename = row[0].lower().replace(" ", "-") + '.txt'
 		new_yaml = open(filename, 'w')
 
 		# Empty string that we will fill with YAML formatted text based on data extracted from our CSV.
 		yaml_text = ""
 		yaml_text += "---\n"
-		yaml_text += "layout: county \n"
+		yaml_text += "layout: post \n"
 
 		# Loop through each cell in this row...
 		for cell_index, cell in enumerate(row):
